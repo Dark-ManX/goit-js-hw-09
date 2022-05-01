@@ -28,6 +28,7 @@ const refs = {
 
 flatpickr('#datetime-picker', options);
 console.log(Date.parse(refs.inputRef.value))
+
 class Timer {
 
     constructor({onTick}) {
@@ -68,7 +69,7 @@ const timer = new Timer({
 });
 
 
-refs.startBtn.addEventListener('click', () => {timer.start()})
+refs.startBtn.addEventListener('click', () => { timer.start() });
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time

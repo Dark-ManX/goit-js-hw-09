@@ -4,42 +4,46 @@ const refs = {
     stopBtn: document.querySelector('button[data-stop'),
 }
 
-const styleSetter = {
+class ColorSetter {
 
-    intervalId: null,
-    isActive: false,
-
-    getRandomHexColor() {
-
-        return refs.bodyRef.style.backgroundColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-    },
+    constructor({ onChange }) {
+        this.intervalId = null;
+        this.isActive = false;
+        // this.onChange = onChange;
+    };
 
     start() {
         
         if (!this.isActive) {
            
             this.intervalId = setInterval(() => {
-                this.getRandomHexColor()
+                getRandomHexColor();
             }, 1000);
 
-            this.isActive = true;
-            
-            refs.startBtn.disabled = true;
+            this.isActive = true;           
+            refs.startBtn.disabled = true;  
         }
 
         return;
-    },
+    };
 
     stop() {
-        console.log('unclicked')
+        
         refs.startBtn.disabled = false;
 
         clearInterval(this.intervalId);
         this.isActive = false;
-    },
+    };
 };
 
-refs.startBtn.addEventListener('click', () => {styleSetter.start()});
+const colorSet = new ColorSetter({
+    // onChange: getRandomHexColor,
+});
 
-refs.stopBtn.addEventListener('click', () => { styleSetter.stop() });
-    
+refs.startBtn.addEventListener('click', () => {colorSet.start()});
+
+refs.stopBtn.addEventListener('click', () => { colorSet.stop() }); 
+
+function getRandomHexColor() {
+    return refs.bodyRef.style.backgroundColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+};
