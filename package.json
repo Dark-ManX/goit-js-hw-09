@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://dark-manx.github.io/goit-js-hw-09",
+  "homepage": "https://dark-manx.github.io/goit-js-hw-09/",
   "scripts": {
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html --public-url /goit-js-hw-09/"
