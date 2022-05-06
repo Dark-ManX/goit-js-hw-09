@@ -41,6 +41,8 @@ class Timer {
         const finalDate = Date.parse(refs.inputRef.value);
         
         if (this.isActive) {
+            refs.startBtn.disabled = true;
+            refs.inputRef.disabled = true;
             return;
         }
         
