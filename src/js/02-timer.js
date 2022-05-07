@@ -5,15 +5,20 @@ const options = {
     time_24hr: true,
   currentDate: Date.now(),
     defaultDate: new Date(),
-  minuteIncrement: 1,
-    onClose(selectedDates) {
+    minuteIncrement: 1,
 
+    onClose(selectedDates) {
+        
         if (Date.parse(selectedDates) <= Date.now()) {
-          
-                return alert("Please choose a date in the future");
+
+            refs.startBtn.disabled = true;
+            alert("Please choose a date in the future");
+            return;
         }
- 
-        return selectedDates[0];
+        
+        refs.startBtn.disabled = false;
+        selectedDates[0];
+        return;
         },
 };
 
@@ -29,16 +34,21 @@ const refs = {
 flatpickr('#datetime-picker', options);
 console.log(Date.parse(refs.inputRef.value))
 
+refs.startBtn.disabled = true;
+
 class Timer {
 
-    constructor({onTick}) {
+    constructor({ onTick }) {
+        
         this.isActive = false;
         this.intervalId = null;
         this.onTick = onTick;
     };
 
     start() {
+
         const finalDate = Date.parse(refs.inputRef.value);
+
         refs.startBtn.disabled = true;
         refs.inputRef.disabled = true;
         
